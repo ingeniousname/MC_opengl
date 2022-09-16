@@ -1,0 +1,5 @@
+﻿  App.cpp
+  main.cpp
+  SpriteRenderer.cpp
+  Generowanie kodu...
+LINK : fatal error LNK1104: nie można otworzyć pliku „glew32.lib”
