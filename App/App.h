@@ -15,7 +15,6 @@ class App
 	Inventory inventory;
 	GLFWwindow* window;
 	Camera camera;
-	KeyInput app_input;
 	World world;
 	UI ui;
 	Player player;

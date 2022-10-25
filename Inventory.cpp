@@ -64,12 +64,12 @@ void Inventory::init()
 
 void Inventory::update()
 {
-	if (this->InventoryInput.getMouseButtonDown(GLFW_KEY_LEFT))
+	if (KeyInput::getInstance()->getMouseButtonDown(GLFW_KEY_LEFT))
 	{
 		if (this->highlighted == 0) this->highlighted = size - 1;
 		else this->highlighted = (this->highlighted - 1) % size;
 	}
-	if (this->InventoryInput.getMouseButtonDown(GLFW_KEY_RIGHT)) this->highlighted = (this->highlighted + 1) % size;
+	if (KeyInput::getInstance()->getMouseButtonDown(GLFW_KEY_RIGHT)) this->highlighted = (this->highlighted + 1) % size;
 }
 
 void Inventory::initCubePreview()

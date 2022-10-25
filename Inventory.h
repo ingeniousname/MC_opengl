@@ -20,9 +20,8 @@ class Inventory
 	RenderInfo tile;
 	RenderInfo background;
 	RenderInfo cubePreview;
-	KeyInput InventoryInput;
 public:
-	Inventory() : InventoryInput({ GLFW_KEY_LEFT, GLFW_KEY_RIGHT },  { GLFW_KEY_LEFT, GLFW_KEY_RIGHT }) {};
+	Inventory() = default;
 	void init();
 	void update();
 	void initCubePreview();

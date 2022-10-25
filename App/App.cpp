@@ -1,7 +1,7 @@
 #include "App.h"
 #include "Clock/Clock.h"
 
-App::App(int width, int height) : camera(width, height), app_input({ GLFW_KEY_ESCAPE }), player(glm::vec3(0.0f, 45.0f, 0.0f))
+App::App(int width, int height) : camera(width, height), player(glm::vec3(0.0f, 45.0f, 0.0f))
 {
 
 	// glfw setup
@@ -41,11 +41,12 @@ App::App(int width, int height) : camera(width, height), app_input({ GLFW_KEY_ES
 	//glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f)
 	render_master.init();
 
-	app_input.setupKeyCallback(this->window);
-	player.setKeyCallback(this->window);
+    KeyInput::getInstance()->setupKeyCallback(this->window);
+	//player.setKeyCallback(this->window);
 	ui.initCrossData();
 	sky.initBodyData();
 	inventory.init();
+
 }
 
 App::~App()
@@ -56,7 +57,7 @@ App::~App()
 
 void App::run()
 {
-	while (!glfwWindowShouldClose(this->window) && !app_input.getKeyDown(GLFW_KEY_ESCAPE))
+	while (!glfwWindowShouldClose(this->window) && !KeyInput::getInstance()->getKeyDown(GLFW_KEY_ESCAPE))
 	{
 		this->update();
 		this->draw();

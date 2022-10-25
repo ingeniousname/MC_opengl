@@ -6,7 +6,7 @@
 
 // static fields necessary for callback function
 
-Player::Player(glm::vec3 initialPos) : playerInput({ GLFW_KEY_W, GLFW_KEY_S, GLFW_KEY_A, GLFW_KEY_D, GLFW_KEY_SPACE, GLFW_MOUSE_BUTTON_LEFT, GLFW_MOUSE_BUTTON_RIGHT }, { GLFW_MOUSE_BUTTON_LEFT, GLFW_MOUSE_BUTTON_RIGHT })
+Player::Player(glm::vec3 initialPos)
 {
 	position = initialPos;
 	velocity = glm::vec3(0.0f);
@@ -40,19 +40,19 @@ void Player::update(World& world, glm::vec3 facing, glm::vec3 right, BlockType i
 
 
     // check for any action taking place
-	if (playerInput.getKeyDown(GLFW_KEY_W))
+	if (KeyInput::getInstance()->getKeyDown(GLFW_KEY_W))
 		acceleration += facing * 0.15f;
-	if (playerInput.getKeyDown(GLFW_KEY_S))
+	if (KeyInput::getInstance()->getKeyDown(GLFW_KEY_S))
 		acceleration -= facing * 0.15f;
-	if (playerInput.getKeyDown(GLFW_KEY_A))
+	if (KeyInput::getInstance()->getKeyDown(GLFW_KEY_A))
 		acceleration -= right * 0.15f;
-	if (playerInput.getKeyDown(GLFW_KEY_D))
+	if (KeyInput::getInstance()->getKeyDown(GLFW_KEY_D))
 		acceleration += right * 0.15f;
-    if (playerInput.getKeyDown(GLFW_KEY_SPACE))
+    if (KeyInput::getInstance()->getKeyDown(GLFW_KEY_SPACE))
         jump();
-    if (playerInput.getMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT))
+    if (KeyInput::getInstance()->getMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT))
         destroyBlock(world, facing);
-    if (playerInput.getMouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT))
+    if (KeyInput::getInstance()->getMouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT))
         placeBlock(world, facing, inHand);
 
     

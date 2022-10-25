@@ -13,13 +13,15 @@ bool glCheckError()
     {
         std::cout << "Error: " << error << std::endl;
         __debugbreak();
-    }
+}
     return true;
 }
 
 std::string read_from_file(const std::string& filename)
 {
     std::ifstream ifs(filename, std::ios::in);
+    if(!ifs)
+        std::cout << "failed to open file: " << filename << std::endl;
     std::stringstream ss;
     ss << ifs.rdbuf();
     return ss.str();
