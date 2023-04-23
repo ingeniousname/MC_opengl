@@ -1,4 +1,4 @@
-MC-Opengl
+<h2>MC-OpenGL</h2>
 
 A simple minecraft-like scene developed using OpenGL library for drawing.
 

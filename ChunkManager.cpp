@@ -4,8 +4,8 @@ void ChunkManager::addChunk(glm::ivec2 chunkCoords)
 {
 	this->Chunks.insert(std::make_pair(chunkCoords, Chunk(chunkCoords * 16)));
 	//this->Chunks[chunkCoords].setBlockData(terrainGenerator.getChunkBlockData(chunkCoords * 16));
-	//this->Chunks[chunkCoords].setBlockData(terrainGenerator.getChunkBlockData(chunkCoords * 16));
-	this->Chunks[chunkCoords].setBlockData(terrainGenerator.flatTerrain());
+	this->Chunks[chunkCoords].setBlockData(terrainGenerator.getChunkBlockData(chunkCoords * 16));
+	//this->Chunks[chunkCoords].setBlockData(terrainGenerator.flatTerrain());
 }
 
 // chunk coords - allow access to a chunk where given block (at the worldCoords) is located
