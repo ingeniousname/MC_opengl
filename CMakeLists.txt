@@ -13,5 +13,5 @@ file(GLOB TEXTURE_SRC "Texture/*.cpp")
 add_executable(MC ${SRC} ${APP_SRC} ${CLOCK_SRC}  ${RENDERER_SRC}  ${SHADER_SRC} ${TEXTURE_SRC})
 
 
-include_directories(MC . )
+include_directories(MC .)
 target_link_libraries(MC PRIVATE -lglfw3 -lglew32 -lopengl32)

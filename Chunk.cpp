@@ -42,7 +42,7 @@ std::vector<glm::ivec2> Chunk::changeBlock(glm::vec3 worldCoords, BlockType newB
 	std::vector<glm::ivec2> neighbours;
 	glm::ivec3 localBlockCoords = getLocalChunkCoords(worldCoords);
 	if(newBlock == AIR_BLOCK)
-		this->blockData[localBlockCoords.x][localBlockCoords.z][localBlockCoords.y] = newBlock;
+		this->blockData[localBlockCoords.x][localBlockCoords.z][localBlockCoords.y] = AIR_BLOCK;
 	else
 	{
 		while(this->blockData[localBlockCoords.x][localBlockCoords.z].size() <= localBlockCoords.y)

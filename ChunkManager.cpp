@@ -33,7 +33,7 @@ bool ChunkManager::isChunkLoaded(glm::ivec2 chunkCoords)
 
 Chunk& ChunkManager::getChunkByChunkCoords(glm::ivec2 chunkCoords)
 {
-	return Chunks[chunkCoords];
+	return Chunks.at(chunkCoords);
 }
 
 void ChunkManager::loadChunk(Chunk* chunk, glm::ivec2 chunkCoords)
@@ -59,7 +59,7 @@ void ChunkManager::loadChunk(Chunk* chunk, glm::ivec2 chunkCoords)
 void ChunkManager::updateAroundPosition(glm::vec2 coords)
 {
 	if (!chunkLoadQueue.empty()) return;
-	for (std::unordered_map<glm::ivec2, Chunk>::iterator it = Chunks.begin(); it != Chunks.end(); it++)
+	for (auto it = Chunks.begin(); it != Chunks.end(); it++)
 		it->second.setActiveFlag(false);
 	glm::ivec2 chunkCoords = worldToChunkCoords(coords);
 	//std::cout << "worldCoords: " << coords.x << " x " << coords.y << ", chunkCoords: " << chunkCoords.x << " x " << chunkCoords.y << std::endl;
@@ -86,7 +86,7 @@ std::vector<RenderInfo> ChunkManager::getChunkDrawData()
 {
 	std::vector<RenderInfo> result;
 	//std::cout << "Total chunks: " << Chunks.size() << std::endl;
-	for (std::unordered_map<glm::ivec2, Chunk>::iterator it = Chunks.begin(); it != Chunks.end(); it++)
+	for (auto it = Chunks.begin(); it != Chunks.end(); it++)
 	{
 		if (it->second.isActive())
 		{

@@ -13,11 +13,22 @@ class ivec2Hash
 public:
 	std::size_t operator()(const glm::ivec2& vector) const
 	{
-		return std::hash<int>{}(vector.x) ^ (std::hash<int>{}(vector.y) << 1);
+		return std::hash<int>{}(vector.x) - (std::hash<int>{}(vector.y) << 1);
 	}
 };
 
 class ivec2Compare
+{
+public:
+    bool operator()(const glm::ivec2& v1, const glm::ivec2& v2) const
+    {
+        if(v1.x == v2.x) return v1.y > v2.y;
+        return v1.x > v2.x;
+    }
+};
+
+
+class ivec2PairCompare
 {
 public:
 	bool operator()(const std::pair<glm::ivec2, Chunk*>& v1, std::pair<glm::ivec2, Chunk*>& v2)
@@ -32,8 +43,8 @@ public:
 
 class ChunkManager
 {
-	std::unordered_map<glm::ivec2, Chunk, ivec2Hash> Chunks;
-	std::priority_queue<std::pair<glm::ivec2, Chunk*>, std::vector<std::pair<glm::ivec2, Chunk*>>, ivec2Compare> chunkLoadQueue;
+	std::map<glm::ivec2, Chunk, ivec2Compare> Chunks;
+	std::priority_queue<std::pair<glm::ivec2, Chunk*>, std::vector<std::pair<glm::ivec2, Chunk*>>, ivec2PairCompare> chunkLoadQueue;
 	ChunkMeshGenerator chunkMeshGenerator;
 	TerrainGenerator terrainGenerator;
 public:

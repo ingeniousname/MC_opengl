@@ -42,6 +42,8 @@ App::App(int width, int height) : camera(width, height), player(glm::vec3(0.0f, 
 	render_master.init();
 
     KeyInput::getInstance()->setupKeyCallback(this->window);
+    KeyInput::getInstance()->setKeyDown(GLFW_MOUSE_BUTTON_RIGHT, false);
+    KeyInput::getInstance()->setKeyDown(GLFW_MOUSE_BUTTON_LEFT, false);
 	//player.setKeyCallback(this->window);
 	ui.initCrossData();
 	sky.initBodyData();
@@ -78,8 +80,13 @@ void App::update()
 	auto sunPositionData = sky.getSunPositionData(player.getPosition());
 	render_master.getChunkRenderer()->updateSunPosition(sunPositionData.first);
 	render_master.getSkyRenderer()->setSunShader(sunPositionData.first, sunPositionData.second);
-	world.update(glm::vec2(player.getPosition().x, player.getPosition().z));
+
+
+
+    world.update(glm::vec2(player.getPosition().x, player.getPosition().z));
+
 	player.update(world, camera.getCameraFrontVector(), camera.getCameraRightVector(), inventory.getSelectedBlock());
+
 }
 
 void App::draw()

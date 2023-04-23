@@ -75,7 +75,8 @@ void KeyInput::key_callback(GLFWwindow* window, int key, int scancode, int actio
 
 void KeyInput::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-    instance->setKeyDown(button, action == GLFW_PRESS);
+    instance->setKeyDown(button, action != GLFW_RELEASE);
+
 }
 
 KeyInput* KeyInput::getInstance() {

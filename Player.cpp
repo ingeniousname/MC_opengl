@@ -68,7 +68,7 @@ BlockType Player::destroyBlock(World& world, glm::vec3 facing)
 {
     // get a vector that indicates where the player is facing
     glm::vec3 facingNormal = facing;
-    for (int i = 0; i < 12; i++)
+    for (int i = 0; i < 24; i++)
     {
         // shoot a ray to find the nearest block that the player is facing
         auto block = world.getBlock(glm::vec3(position.x, position.y + height, position.z) + facing);
@@ -77,7 +77,7 @@ BlockType Player::destroyBlock(World& world, glm::vec3 facing)
             world.changeBlock(glm::vec3(position.x, position.y + height, position.z) + facing);
             return block;
         }
-        else facing += facingNormal * 0.5f;
+        else facing += facingNormal * 0.25f;
     }
     return AIR_BLOCK;
 }
@@ -86,7 +86,7 @@ void Player::placeBlock(World& world, glm::vec3 facing, BlockType type)
 {
     // get a vector that indicates where the player is facing
     glm::vec3 facingNormal = facing;
-    for (int i = 0; i < 12; i++)
+    for (int i = 0; i < 24; i++)
     {
         // try finding a block to which you can stick your placed block
         auto block = world.getBlock(glm::vec3(position.x, position.y + height, position.z) + facing);
@@ -95,13 +95,13 @@ void Player::placeBlock(World& world, glm::vec3 facing, BlockType type)
             while (block != AIR_BLOCK)
             {
                 // take a step back, find room for your block
-                facing -= facingNormal * 0.05f;
+                facing -= facingNormal * 0.02f;
                 block = world.getBlock(glm::vec3(position.x, position.y + height, position.z) + facing);
             }
             world.changeBlock(glm::vec3(position.x, position.y + height, position.z) + facing, type);
             break;
         }
-        else facing += facingNormal * 0.5f;
+        else facing += facingNormal * 0.25f;
     }
 }
 
