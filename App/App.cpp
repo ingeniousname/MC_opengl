@@ -1,5 +1,6 @@
 #include "App.h"
 #include "Clock/Clock.h"
+#include <fstream>
 
 App::App(int width, int height) : camera(width, height), player(glm::vec3(0.0f, 45.0f, 0.0f))
 {
@@ -7,7 +8,7 @@ App::App(int width, int height) : camera(width, height), player(glm::vec3(0.0f, 
 	// glfw setup
 	if (!glfwInit())
 		std::cout << "error initializing glfw" << std::endl;
-	window = glfwCreateWindow(width, height, "my window", NULL, NULL);
+	window = glfwCreateWindow(width, height, "MC", NULL, NULL);
 	if (!window)
 		std::cout << "error with the window creation" << std::endl;
 
@@ -20,8 +21,6 @@ App::App(int width, int height) : camera(width, height), player(glm::vec3(0.0f, 
 	// callback setup
 	glfwSetCursorPosCallback(this->window, Camera::mouse_callback);
 	glfwSetWindowSizeCallback(this->window, Camera::window_size_callback);
-
-
 
 	//glew setup
 	GLenum status = glewInit();

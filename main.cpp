@@ -1,6 +1,6 @@
 #include "App/App.h"
-const int WIDTH = 1024;
-const int HEIGHT = 768;
+const int WIDTH = 1600;
+const int HEIGHT = 900;
 App Application(WIDTH, HEIGHT);
 
 

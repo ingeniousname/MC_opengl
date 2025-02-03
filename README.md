@@ -2,8 +2,19 @@
 
 A simple minecraft-like scene developed using OpenGL library for drawing.
 
-The project has only very basic functionalities like placing/destroying blocks, walking, noise terrain generator, simple sun lighting. I've done in some time ago and it requires heavy refactoring, but I can't be bothered right now (university). If I were to change it, I'd probably start from scratch - writing this code was mostly an OpenGL learning experience for me.
+Some of the functionalities include:
+- Procedurally generated world using Perlin noise
+- Chunk manager that stores and loads chunks of blocks as the player moves
+- Dynamic chunk mesh generation (each chunk gets drawn in a single draw call, only the border blocks are included in the mesh)
+- Usage of atlas textures for the blocks
+- Player movement, basic physics, placing and destroying blocks
 
-Move using WSAD, jump with space, place/destroy blocks with left/right mouse button, change block type with left/right arrow (menu is bugged :P).
+![](media/mc1.png)
 
-Compilation requires linking -lglfw3, -lglew32 and -lopengl32 , hopefully my cmake file works for you :)
+
+![](media/mcg1.gif)
+
+
+![](media/mc2.png)
+
+![](media/mcg2.gif)

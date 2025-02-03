@@ -21,7 +21,7 @@ void KeyInput::setKeyDown(int key, bool flag)
 bool KeyInput::getKeyDown(int key)
 {
     //find a key and check if it is down
-    bool result;
+    bool result = false;
     auto it = keymap.find(key);
     if (it != keymap.end())
         result = keymap[key];
@@ -61,7 +61,7 @@ void KeyInput::setKeyReleased(int key, bool flag)
 bool KeyInput::getKeyReleased(int key)
 {
     // check if a key is released
-    bool result;
+    bool result = false;
     auto it = releasemap.find(key);
     if (it != releasemap.end())
         result = releasemap[key];

@@ -58,6 +58,7 @@ void ChunkManager::loadChunk(Chunk* chunk, glm::ivec2 chunkCoords)
 
 void ChunkManager::updateAroundPosition(glm::vec2 coords)
 {
+	int range = 7;
 	if (!chunkLoadQueue.empty()) return;
 	for (auto it = Chunks.begin(); it != Chunks.end(); it++)
 		it->second.setActiveFlag(false);
@@ -65,9 +66,9 @@ void ChunkManager::updateAroundPosition(glm::vec2 coords)
 	//std::cout << "worldCoords: " << coords.x << " x " << coords.y << ", chunkCoords: " << chunkCoords.x << " x " << chunkCoords.y << std::endl;
 
 
-	for (int i = -4; i <= 4; i++)
+	for (int i = -range; i <= range; i++)
 	{
-		for (int j = -4; j <= 4; j++)
+		for (int j = -range; j <= range; j++)
 		{
 			// if the chunk is found...
 			if (Chunks.find(glm::ivec2(chunkCoords.x + i, chunkCoords.y + j)) != Chunks.end())
